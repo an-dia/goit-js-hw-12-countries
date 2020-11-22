@@ -59,9 +59,10 @@ body {
   padding: 8px 15px;
   color: inherit;
   margin-bottom: 30px;
+  outline: none;
 
   &:focus {
-    border: 2px solid rgb(126, 120, 180);
+    border: 2px solid rgb(107, 97, 199);
   }
 }
 
