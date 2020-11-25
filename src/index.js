@@ -13,13 +13,20 @@ const refs = getRefs();
 refs.input.addEventListener('input', debounce(onSearch, 500));
 
 
-function onSearch(e) {
+async function onSearch(e) {
   e.preventDefault();
   clearContainer();
   const searchQuery = e.target.value.trim();
 
-  API.fetchCountries(searchQuery)
-    .then(renderCountriesCard)
+  // API.fetchCountries(searchQuery)
+  //   .then(renderCountriesCard)
+  try {
+    const country = await API.fetchCountries(searchQuery);
+    const renderCountries = await renderCountriesCard(country);
+    return renderCountries;
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 
@@ -64,5 +71,7 @@ function clearContainer() {
   refs.cardContainer.innerHTML = '';
   
 }
+
+
 
 
